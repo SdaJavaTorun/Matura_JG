@@ -151,8 +151,9 @@ public class Controller {
         Map<Integer, List<Student>> grouped = listOfStudents.stream()
                 .collect(Collectors.groupingBy(x -> x.getRoomId()));
 
-        Set<String> set = new HashSet<String>();
+
         for (Map.Entry<Integer, List<Student>> p : grouped.entrySet()) {
+            Set<String> set = new HashSet<String>();
             for (int i = 0; i < p.getValue().size(); i++) {
                 for (int j = 0; j < p.getValue().get(i).getTitle().size(); j++) {
 
@@ -161,14 +162,14 @@ public class Controller {
             }
             suma += set.size();
         }
+
         System.out.println(suma);
 
         FileWriter fw = new FileWriter (output, true);
         PrintWriter pw = new PrintWriter(fw);
 
-
         pw.println("zadanie_5_5");
-        pw.println("Liczba wypozyczonych gdyby system dzialal teraz = " + set.size());
+        pw.println("Liczba wypozyczonych gdyby system dzialal teraz = " + suma);
         pw.close();
 
 
